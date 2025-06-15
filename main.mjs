@@ -33,10 +33,9 @@ import login from './steps/login.mjs';
   );
 
   try {
-    // Navigate to the page
     await login(page, ++screenshotSequence);
 
-    await page.waitForSelector('button'); // wait for any buttons to load
+    await page.waitForSelector('button');
     await page.screenshot({ path: `${screenshotDir}/` + ++screenshotSequence +'_switch_board.png' });
     await new Promise(resolve => setTimeout(resolve, 1000));
 
@@ -74,7 +73,6 @@ import login from './steps/login.mjs';
     await page.screenshot({ path: `${screenshotDir}/` + ++screenshotSequence + '_assembly_first_load.png' });
     await new Promise(resolve => setTimeout(resolve, 2000));
 
-    // Start tracing navigating to locations page
     await page.tracing.start({
       path: `${traceDir}/` + 'navigate_to_components.json',
       categories: ['devtools.timeline']
@@ -100,7 +98,6 @@ import login from './steps/login.mjs';
 
     await new Promise(resolve => setTimeout(resolve, 2000));
 
-    // Start tracing navigating to locations page
     await page.tracing.start({
       path: `${traceDir}/` + 'navigate_to_products.json',
       categories: ['devtools.timeline']
@@ -135,7 +132,6 @@ import login from './steps/login.mjs';
         })
       );
     });
-    //await new Promise(resolve => setTimeout(resolve, 100));
 
     await page.tracing.stop();
     console.log('Performance trace saved to navigate_to_products.json');
@@ -144,7 +140,6 @@ import login from './steps/login.mjs';
 
     await new Promise(resolve => setTimeout(resolve, 2000));
 
-    // Start tracing navigating to locations page
     await page.tracing.start({
       path: `${traceDir}/` + 'navigate_to_locations.json',
       categories: ['devtools.timeline']
@@ -175,7 +170,6 @@ import login from './steps/login.mjs';
 
     await new Promise(resolve => setTimeout(resolve, 2000));
    
-    // Start tracing navigating to locations page
     await page.tracing.start({
       path: `${traceDir}/` + 'navigate_to_assemblies.json',
       categories: ['devtools.timeline']
