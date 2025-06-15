@@ -28,6 +28,8 @@ export default async function login(page, screenshotSequence) {
   ]);
 
   console.log(`login took: ${Date.now() - clickLogin}ms`);
+
+  await page.screenshot({ path: `${screenshotDir}/` + ++screenshotSequence + '_switch_board.png' });
 }
 
 async function waitForButtonWithText(page, text) {

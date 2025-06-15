@@ -1,6 +1,7 @@
 import puppeteer from 'puppeteer';
 import { screenshotDir, traceDir } from './config.mjs';
 import login from './steps/login.mjs';
+import assembly from './steps/assembly.mjs';
 
 (async () => {
   let screenshotSequence = 0;
@@ -35,42 +36,12 @@ import login from './steps/login.mjs';
   try {
     await login(page, ++screenshotSequence);
 
-    await page.waitForSelector('button');
-    await page.screenshot({ path: `${screenshotDir}/` + ++screenshotSequence +'_switch_board.png' });
+    await page.screenshot({ path: `${screenshotDir}/` + ++screenshotSequence + '_switch_board.png' });
+
     await new Promise(resolve => setTimeout(resolve, 1000));
 
-    /*
-    const buttonTexts = await page.evaluate(() => {
-      return Array.from(document.querySelectorAll('button')).map(btn => btn.innerText.trim());
-    });
-    console.log('Buttons found:', buttonTexts);
-    */
+    await assembly(page, ++screenshotSequence);
 
-    await Promise.all([
-      page.evaluate(() => {
-        const buttons = [...document.querySelectorAll('button')];
-        const ccBtn = buttons.find(btn => btn.innerText.trim() === 'Creative Center');
-        if (ccBtn) {
-          ccBtn.click();
-        }
-      })
-    ]);
-
-    await page.waitForNavigation({ waitUntil: 'networkidle0' })
-
-    /*
-    const assembly_layouts = await page.evaluate(() => {
-      return Array.from(document.querySelectorAll('p')).map(p => p.innerText.trim());
-    });
-    console.log('p tags: ', assembly_layouts);
-    */
-
-    await page.waitForFunction(() => {
-      const regex = /^\d+\s+(horizontal|vertical)\s+screens$/i;
-      return [...document.querySelectorAll('p')].some(p => p.innerText.trim().toLowerCase().match(regex));
-    }, { timeout: 10000 });
-
-    await page.screenshot({ path: `${screenshotDir}/` + ++screenshotSequence + '_assembly_first_load.png' });
     await new Promise(resolve => setTimeout(resolve, 2000));
 
     await page.tracing.start({
