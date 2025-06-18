@@ -3,6 +3,6 @@ export const credentials = {
     username: 'PFuser1@yopmail.com',
     password: 'PFuser@1'
 };
-export const screenshotDir = 'screenshots';
-export const traceDir = 'traces';
+export const screenshotDir = '../screenshots';
+export const traceDir = '../traces';
 //export const waitTimeout = 15000;

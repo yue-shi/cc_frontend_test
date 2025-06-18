@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 
-const foldersToClean = ['screenshots', 'traces'];
+const foldersToClean = ['../screenshots', '../traces'];
 
 async function cleanFolder(folder) {
     try {

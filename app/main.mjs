@@ -16,6 +16,7 @@ import assembly from './steps/assembly.mjs';
       '--disable-blink-features=BlockCredentialedSubresources',
       '--enable-features=NetworkService,NetworkServiceInProcess',
       '--disable-features=site-per-process'
+      //'--no-sandbox', '--disable-setuid-sandbox'
     ]
   });
 
