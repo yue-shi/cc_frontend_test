@@ -1,4 +1,4 @@
-import { screenshotDir } from '../config.mjs';
+import { screenshotDir } from '../config.js';
 
 export default async function assembly(page, screenshotSequence) {
     await Promise.all([

@@ -1,12 +1,12 @@
 import puppeteer from 'puppeteer';
-import { screenshotDir, traceDir } from './config.mjs';
-import login from './steps/login.mjs';
-import assembly from './steps/assembly.mjs';
+import { screenshotDir, traceDir } from './config.js';
+import login from './steps/login.js';
+import assembly from './steps/assembly.js';
 
 // Check for --cleanup flag
 const shouldClean = process.argv.includes('--cleanup');
 if (shouldClean) {
-  await import('./cleanup.mjs');
+  await import('./cleanup.js');
 }
 
 (async () => {

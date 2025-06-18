@@ -1,5 +1,5 @@
-import { baseUrl, credentials, screenshotDir } from '../config.mjs';
-import delay from '../utils/waitUtils.mjs';
+import { baseUrl, credentials, screenshotDir } from '../config.js';
+import delay from '../utils/waitUtils.js';
 
 export default async function login(page, screenshotSequence) {
   await page.goto(baseUrl);
@@ -11,7 +11,9 @@ export default async function login(page, screenshotSequence) {
   await page.type('input[name="password"]', credentials.password, { delay: 100 });
 
   delay(1000);
+
   await page.screenshot({ path: `${screenshotDir}/` + screenshotSequence + `_login.png` });
+
   delay(1000);
 
   const clickLogin = Date.now();
@@ -28,8 +30,6 @@ export default async function login(page, screenshotSequence) {
   ]);
 
   console.log(`login took: ${Date.now() - clickLogin}ms`);
-
-  await page.screenshot({ path: `${screenshotDir}/` + ++screenshotSequence + '_switch_board.png' });
 }
 
 async function waitForButtonWithText(page, text) {

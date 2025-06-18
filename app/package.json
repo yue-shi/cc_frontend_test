@@ -1,0 +1,23 @@
+{
+  "name": "cc-ui-perf-test",
+  "version": "1.0.0",
+  "description": "Creative Center UI performance testing using Puppeteer",
+  "keywords": [
+    "Puppeteer"
+  ],
+  "homepage": "https://github.com/yue-shi/cc_frontend_test#readme",
+  "bugs": {
+    "url": "https://github.com/yue-shi/cc_frontend_test/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/yue-shi/cc_frontend_test.git"
+  },
+  "license": "ISC",
+  "author": "Yue Shi",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "test": "node main.js --cleanup"
+  }
+}
