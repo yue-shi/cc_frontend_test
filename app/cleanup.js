@@ -1,7 +1,8 @@
 import fs from 'fs/promises';
 import path from 'path';
+import {screenshotDir, traceDir} from './config.js';
 
-const foldersToClean = ['../screenshots', '../traces'];
+const foldersToClean = [screenshotDir, traceDir];
 
 async function cleanFolder(folder) {
     try {
