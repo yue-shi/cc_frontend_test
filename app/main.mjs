@@ -3,7 +3,14 @@ import { screenshotDir, traceDir } from './config.mjs';
 import login from './steps/login.mjs';
 import assembly from './steps/assembly.mjs';
 
+// Check for --cleanup flag
+const shouldClean = process.argv.includes('--cleanup');
+if (shouldClean) {
+  await import('./cleanup.mjs');
+}
+
 (async () => {
+
   let screenshotSequence = 0;
 
   const browser = await puppeteer.launch({
