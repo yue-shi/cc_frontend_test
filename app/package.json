@@ -19,5 +19,8 @@
   "main": "main.js",
   "scripts": {
     "test": "node main.js --cleanup"
+  },
+  "dependencies": {
+    "puppeteer": "^24.10.1"
   }
 }
