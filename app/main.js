@@ -15,15 +15,16 @@ if (shouldClean) {
 
   const browser = await puppeteer.launch({
     headless: false,  // Use true for CI
-    userDataDir: './user-data-dir',
+    userDataDir: '../user-data-dir',
     args: [
       '--disable-features=TrackingProtection3pcd',
       '--disable-features=SameSiteByDefaultCookies,CookiesWithoutSameSiteMustBeSecure',
       '--disable-site-isolation-trials',
       '--disable-blink-features=BlockCredentialedSubresources',
       '--enable-features=NetworkService,NetworkServiceInProcess',
-      '--disable-features=site-per-process'
-      //'--no-sandbox', '--disable-setuid-sandbox'
+      '--disable-features=site-per-process',
+      '--no-sandbox',
+      '--disable-setuid-sandbox'
     ]
   });
 
