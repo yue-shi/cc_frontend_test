@@ -14,7 +14,7 @@
     "url": "git+ssh://git@github.com/yue-shi/cc_frontend_test.git"
   },
   "license": "ISC",
-  "author": "Yue Shi",
+  "author": "Learning Grok",
   "type": "module",
   "main": "main.js",
   "scripts": {
